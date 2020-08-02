@@ -1,0 +1,7 @@
+{
+  "属性赋值": {
+    "prefix": "bgaassignment",
+    "body": "this.${1:属性名称} = ${2:默认值}",
+    "description": "属性赋值 this.key = value"
+  }
+}

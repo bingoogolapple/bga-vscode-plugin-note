@@ -1,0 +1,301 @@
+{
+	"name": "bga-vscode-plugin-note",
+	"displayName": "BGA VS Code 插件学习笔记名称",
+	"description": "BGA VS Code 插件学习笔记描述",
+	"keywords": [
+		"BGA",
+		"Demo"
+	],
+	"version": "0.0.1",
+	"author": {
+		"name": "bingoogolapple",
+		"email": "bingoogolapple@gmail.com"
+	},
+	"publisher": "bingoogolapple",
+	"license": "SEE LICENSE IN LICENSE",
+	"homepage": "https://github.com/bingoogolapple/bga-bga-vscode-plugin-note/blob/master/README.md",
+	"bugs": {
+		"url": "https://github.com/bingoogolapple/bga-bga-vscode-plugin-note/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bingoogolapple/bga-bga-vscode-plugin-note.git"
+	},
+	"engines": {
+		"vscode": "^1.47.0"
+	},
+	"main": "./out/extension.js",
+	"icon": "images/icon.png",
+	"preview": false,
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:bga-vscode-plugin-note.BGA1",
+		"onCommand:bga-vscode-plugin-note.BGA2",
+		"onCommand:bga-vscode-plugin-note.getCurrentFilePath",
+		"onCommand:bga-vscode-plugin-note.webview",
+		"onView:bga-tab-device"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "bga-vscode-plugin-note.BGA1",
+				"title": "BGA1插件"
+			},
+			{
+				"command": "bga-vscode-plugin-note.BGA2",
+				"title": "BGA2插件",
+				"icon": "images/test-icon.svg"
+			},
+			{
+				"command": "bga-vscode-plugin-note.getCurrentFilePath",
+				"title": "获取当前文件(夹)路径"
+			},
+			{
+				"command": "bga-vscode-plugin-note.webview",
+				"title": "打开 webview"
+			},
+			{
+				"command": "bga-vscode-plugin-note.refreshDevicesView",
+				"title": "刷新设备列表",
+				"icon": {
+					"light": "images/light/refresh.svg",
+					"dark": "images/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "bga-vscode-plugin-note.showLogs",
+				"title": "Show Logs"
+			}
+		],
+		"keybindings": [
+			{
+				"key": "ctrl+shift+B",
+				"mac": "cmd+shift+B",
+				"command": "bga-vscode-plugin-note.BGA1",
+				"when": "editorHasSelection && resourceFilename =~ /.md|.ts/"
+			},
+			{
+				"key": "ctrl+shift+G",
+				"mac": "cmd+shift+G",
+				"command": "bga-vscode-plugin-note.BGA2"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "bga-vscode-plugin-note.BGA1",
+					"group": "BGA",
+					"when": "editorHasSelection && resourceFilename =~ /.md|.ts/"
+				},
+				{
+					"command": "bga-vscode-plugin-note.BGA2",
+					"group": "BGA"
+				},
+				{
+					"command": "bga-vscode-plugin-note.getCurrentFilePath",
+					"group": "BGA",
+					"when": "editorFocus"
+				},
+				{
+					"command": "bga-vscode-plugin-note.webview",
+					"group": "BGA"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "bga-vscode-plugin-note.BGA2",
+					"group": "navigation"
+				}
+			],
+			"editor/title/context": [
+				{
+					"command": "bga-vscode-plugin-note.BGA2",
+					"group": "BGA"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "bga-vscode-plugin-note.getCurrentFilePath",
+					"group": "BGA"
+				}
+			],
+			"view/title": [
+				{
+					"command": "bga-vscode-plugin-note.refreshDevicesView",
+					"when": "view == bga-tab-device",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "bga-vscode-plugin-note.showLogs",
+					"when": "view == bga-tab-device && viewItem == DeviceItem"
+				}
+			]
+		},
+		"snippets": [
+			{
+				"language": "typescript",
+				"path": "./snippets/react.code-snippets"
+			},
+			{
+				"language": "typescript",
+				"path": "./snippets/rn.code-snippets"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "bga-tab",
+					"title": "BGA",
+					"icon": "images/test-icon.svg"
+				}
+			]
+		},
+		"views": {
+			"bga-tab": [
+				{
+					"id": "bga-tab-device",
+					"name": "设备列表"
+				},
+				{
+					"id": "bga-tab-section2",
+					"name": "第二部分"
+				},
+				{
+					"id": "bga-tab-section3",
+					"name": "第三部分"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "BGA VS Code",
+			"properties": {
+				"bga-vscode-plugin-note.testBoolean": {
+					"type": "boolean",
+					"default": true,
+					"description": "测试boolean类型配置",
+					"scope": "window"
+				},
+				"bga-vscode-plugin-note.testNumber": {
+					"type": "number",
+					"default": 18,
+					"description": "测试number类型配置",
+					"scope": "window"
+				},
+				"bga-vscode-plugin-note.testNumberEnum": {
+					"type": "number",
+					"default": 17,
+					"enum": [
+						10,
+						14
+					],
+					"enumDescriptions": [
+						"小学",
+						"初中"
+					],
+					"description": "测试string枚举配置",
+					"scope": "window"
+				},
+				"bga-vscode-plugin-note.testString": {
+					"type": "string",
+					"default": "我是默认值",
+					"description": "测试string类型配置",
+					"scope": "window"
+				},
+				"bga-vscode-plugin-note.testStringEnum": {
+					"type": "string",
+					"default": "TypeScript",
+					"enum": [
+						"Java",
+						"TypeScript"
+					],
+					"enumDescriptions": [
+						"100 元",
+						"200 元"
+					],
+					"description": "测试string枚举配置",
+					"scope": "window"
+				},
+				"bga-vscode-plugin-note.testStringArray": {
+					"type": "array",
+					"default": [
+						"aa",
+						"bb"
+					],
+					"items": {
+						"type": "string"
+					},
+					"uniqueItems": true,
+					"markdownDescription": "#标题1\n##标题2",
+					"scope": "window"
+				},
+				"bga-vscode-plugin-note.testObjectArray": {
+					"type": "array",
+					"default": [
+						{
+							"key1": "key1value1",
+							"key2": true,
+							"key3": "key3value3"
+						}
+					],
+					"items": {
+						"type": "object",
+						"required": [
+							"key1",
+							"key3"
+						],
+						"properties": {
+							"key1": {
+								"type": "string",
+								"description": "key1 key1 key1"
+							},
+							"key2": {
+								"type": "boolean",
+								"description": "key2 key2 key2",
+								"default": false
+							},
+							"key3": {
+								"type": "string",
+								"description": "key3 key3 key3"
+							}
+						}
+					},
+					"markdownDescription": "测试对象数组",
+					"scope": "window"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile && yarn run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"@types/vscode": "^1.47.0",
+		"@typescript-eslint/eslint-plugin": "^2.30.0",
+		"@typescript-eslint/parser": "^2.30.0",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	},
+	"prettier": {
+		"singleQuote": true,
+		"semi": false,
+		"arrowParens": "avoid",
+		"trailingComma": "none"
+	},
+	"dependencies": {}
+}

@@ -1,0 +1,19 @@
+{
+  "BGA RN 组件": {
+    "prefix": "bgacomponent",
+    "body": [
+      "interface I${1:ComponentName}Props {",
+      "  ${2:name}: ${3:type}",
+      "}",
+      "@observer",
+      "class ${1:ComponentName}Component extends React.PureComponent<I${1:ComponentName}Props> {",
+      "  render() {",
+      "    <View>",
+      "      <Text>${1:ComponentName}${0}</Text>",
+      "    </View>",
+      "  }",
+      "}"
+    ],
+    "description": "BGA 创建组件"
+  }
+}
