@@ -57,3 +57,7 @@ vsce package
 ```sh
 vsce publish
 ```
+
+## 其他
+
+- 插件安装位置为 ~/.vscode/extensions/[package.json 中的 publisher].[package.json 中的 name]-[package.json 中的 version]
