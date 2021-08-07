@@ -1,4 +1,5 @@
-import { spawn, SpawnOptionsWithoutStdio } from 'child_process'
+import * as vscode from 'vscode'
+import { exec, ExecException, spawn, SpawnOptionsWithoutStdio } from 'child_process'
 export function shellCommand(
   cmd: string,
   args?: ReadonlyArray<string>,
@@ -21,4 +22,48 @@ export function shellCommand(
       reject(error)
     }
   })
+}
+
+export function gitAdd(dirPath: string) {
+  exec(`cd ${dirPath} && git add .`, err => {
+    if (err) {
+      console.log('command fail:', 'git add .')
+    } else {
+      console.log('command success:', 'git add .')
+    }
+  })
+}
+
+export function username(): Promise<string> {
+  return new Promise<string>(resolve => {
+    exec(
+      'git config user.name',
+      (error: ExecException | null, stdout: string, stderr: string) => {
+        if (error) {
+          resolve('未知用户')
+        } else {
+          resolve(stdout.trim())
+        }
+      }
+    )
+  })
+}
+
+export function openUrlWithOpen(url: string) {
+  return new Promise<string>(resolve => {
+    exec(
+      `open ${url}`,
+      (error: ExecException | null, stdout: string, stderr: string) => {
+        if (error) {
+          console.error('打开失败')
+        } else {
+          console.log('打开成功')
+        }
+      }
+    )
+  })
+}
+
+export function openUrlWithVSCodeOpen(url: string) {
+  vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(url))
 }

@@ -22,7 +22,10 @@ yo code
 
 - [注册账号并获取 Token](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#get-a-personal-access-token)
 
-`Organization` 一定要选择 `All accessible organizations`，否则会出现 401
+  - [登录或注册账号](https://login.live.com)
+  - [创建阻止](https://aka.ms/SignupAzureDevOps)
+  - [获取 Token](https://dev.azure.com) 右上角 User settings -> Personal access tokens
+    `Organization` 一定要选择 `All accessible organizations`，否则会出现 401
 
 - [命令行创建 publisher](https://marketplace.visualstudio.com/manage/createpublisher)
 

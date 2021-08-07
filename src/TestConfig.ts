@@ -54,3 +54,25 @@ export function listenConfig() {
     }
   )
 }
+
+export function testModifyConfig() {
+  const config = vscode.workspace.getConfiguration("fileheader")
+
+  // const setAsGlobal = config.inspect('customMade')?.workspaceValue === undefined;
+
+  config.update("customMade", {
+    "Date": "Do not edit",
+    "Author": "bingoogolapple",
+    "Description": "请填写描述信息"
+  }, true)
+
+  config.update("configObj", {
+    "dateFormat": "YYYY/MM/DD", // 修改日期格式
+    "specialOptions": {
+      "Description": "About", // 将 Description 映射为 About
+      "Date": "Time" // 将 Date 映射为 Time
+    },
+    "atSymbol": ["", "@"], // 去除前面的 @ 符号
+    "autoAdd": false // 自动添加注释（默认是开启的）
+  }, true)
+}

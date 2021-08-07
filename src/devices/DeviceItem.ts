@@ -18,9 +18,6 @@ export class DeviceItem extends vscode.TreeItem {
   ) {
     super(label, collapsibleState)
     this.iconPath = this.context.asAbsolutePath('assets/device.svg')
-  }
-
-  get tooltip(): string {
-    return `${this.deviceId}[${this.deviceStatus}]`
+    this.tooltip = `${this.deviceId}[${this.deviceStatus}]`
   }
 }
